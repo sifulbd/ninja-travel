@@ -1,0 +1,117 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', cursive;
+}
+p, body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.section-separator {
+    padding: 180px 0;
+}
+.mini-section-separator {
+    padding: 100px 0;
+}
+.rw-height {
+    height: 100vh;
+}
+.btn:hover {
+    background-color: #f9a51a;
+}
+.btn {
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    outline: 0;
+    padding: 10px 34px;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 14px;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+    line-height: 22px;
+    outline: 0;
+    padding: 12px 60px;
+    border-radius: 4px;
+    background-color: #f9a51a;
+    color: #151945;
+    opacity: 1;
+    outline: 0;
+    border-radius: 10px;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+.img-bg {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.nt-home {
+    position: relative;
+    color: #fff;
+}
+.nt-home h2{
+    font-size: 100px;
+    line-height: 1.1;
+}
+.nt-home p{
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+.nt-home .btn{
+
+}
+.ftp-overlay {
+    background-color: rgb(0 0 0 / 72%);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.mdl {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.nt-booking-form {
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 10px;
+}
+.form-label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    color: #818181;
+}
+.date-selectr {
+    padding: 0 15px;
+}
+.nt-booking-form .form-control{
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f2f2f2;
+}
+.form-control {
+
+}
+
+.segrup {
+    margin-left: 30px;
+}

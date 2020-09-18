@@ -3,31 +3,41 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
-  } from "react-router-dom";
+    Link,
+    NavLink
+} from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar'
+import { Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import logo from "./../../assets/images/logo.png";
 
 const Header = () => {
     return (
         <div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                    <Link to="/destination">Destination</Link>
-                    </li>
-                    <li>
-                    <Link to="/blog">Blog</Link>
-                    </li>
-                    <li>
-                    <Link to="/contact">Contact</Link>
-                    </li>
-                    <li>
-                    <Link to="/login">Login</Link>
-                    </li>
-                </ul>
-            </nav>
+            <Navbar bg="light" expand="lg"  fixed="top">
+                <div className="container">
+                    <Navbar.Brand as={Link} to="/home">
+                        <img
+                            src={logo}
+                            height="50"
+                            className="d-inline-block align-top"
+                            alt="React Bootstrap logo"
+                        />
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Form inline className="mr-auto">
+                        <FormControl type="text" placeholder="Search" className="mr-sm-3" />
+                    </Form>
+                    <Nav>
+                        <Nav.Link as={Link} to="/home">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/destination">Destination</Nav.Link>
+                        <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
+                        <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                    </Nav>
+                    </Navbar.Collapse>
+                </div>
+            </Navbar>
         </div>
     );
 };
