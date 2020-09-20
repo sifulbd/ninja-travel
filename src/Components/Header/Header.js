@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -9,8 +9,18 @@ import {
 import Navbar from 'react-bootstrap/Navbar'
 import { Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import logo from "./../../assets/images/logo.png";
+import { UserContext } from '../../App';
 
 const Header = () => {
+    const [singnedInUser, setsingnedInUser] = useState(false);
+    const [user, setUser] = useState({
+        isSignedIn: false,
+        name: '',
+        email: '',
+        password: '',
+    });
+    const [loggedIn, setLoggedInUser] = useContext(UserContext);
+    // console.log(singnedInUser && user.name)
     return (
         <div>
             <Navbar bg="light" expand="lg"  fixed="top">
@@ -33,7 +43,7 @@ const Header = () => {
                         <Nav.Link as={Link} to="/destination">Destination</Nav.Link>
                         <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
                         <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                        <Nav.Link as={Link} to="/login">{singnedInUser ? user.name : 'Login'}</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                 </div>

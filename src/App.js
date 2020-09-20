@@ -16,43 +16,53 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header/Header';
 import './assets/css/style.css';
 import "react-datepicker/dist/react-datepicker.css";
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import ResultPage from './Components/ResultPage/ResultPage';
 
 
 export const PlaceContext = createContext();
+export const UserContext = createContext();
+
 
 function App() {
   const[place, setPlace] = useState(1);
+  const [loggedIn, setLoggedInUser] = useState({});
   return (
-    <PlaceContext.Provider value={[place, setPlace]}>
-      <Router>
-        <Header></Header>
-        <div>
-          <Switch>
-            <Route path={`/destination/:placeId`}>
-              <Booking>
-              </Booking>
-            </Route>
-            <Route path="/blog">
-              <Blog />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route exect path="/">
-              <Home>
+    <UserContext.Provider value={[loggedIn, setLoggedInUser]}>
+      <PlaceContext.Provider value={[place, setPlace]}>
+        <Router>
+          <Header></Header>
+          <div>
+            <Switch>
+              <Route path={`/destination/:placeId`}>
+                <Booking>
+                </Booking>
+              </Route>
+              <Route path="/blog">
+                <Blog />
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <PrivateRoute path="/book/:id">
+                <ResultPage></ResultPage>
+              </PrivateRoute>
+              <Route exect path="/">
+                <Home>
 
-              </Home>
-            </Route>
-            <Route path="*">
-              <Notfound></Notfound>
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </PlaceContext.Provider>
+                </Home>
+              </Route>
+              <Route path="*">
+                <Notfound></Notfound>
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </PlaceContext.Provider>
+    </UserContext.Provider>
   );
 }
 

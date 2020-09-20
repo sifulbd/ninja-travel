@@ -13,7 +13,7 @@ const Bookingform =  () => {
     return (
         <div>
             <Form className="nt-booking-form">
-                <Form.Group classNam="col-sm-12">
+                <Form.Group className="col-sm-12">
                     <Form.Label className="form-label">Origin</Form.Label>
                     <Form.Control as="select">
                         <option>Dhaka</option>
@@ -25,7 +25,7 @@ const Bookingform =  () => {
                         <option>Foridpur</option>
                     </Form.Control>
                 </Form.Group>
-                <Form.Group classNam="col-sm-12">
+                <Form.Group className="col-sm-12">
                     <Form.Label className="form-label">Destination</Form.Label>
                     <Form.Control as="select">
                         <option>Dhaka</option>
@@ -38,7 +38,7 @@ const Bookingform =  () => {
                     </Form.Control>
                 </Form.Group>
                 <div className="row date-selectr">
-                    <Form.Group classNam="col-sm-6">
+                    <Form.Group className="col-sm-6">
                         <Form.Label className="form-label">From</Form.Label>
                         <DatePicker className="form-control"
                             selected={startDate}
