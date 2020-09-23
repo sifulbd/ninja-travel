@@ -8,7 +8,8 @@ const Bookingform =  () => {
     const [endDate, setEndDate] = useState(new Date());
     const history = useHistory();
     const handleBook = (id) => {
-        history.push(`/book/${id}`);
+        // history.push(`/destination`);
+        history.push(`/result/`);
     }
     return (
         <div>

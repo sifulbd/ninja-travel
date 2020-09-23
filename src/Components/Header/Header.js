@@ -12,15 +12,7 @@ import logo from "./../../assets/images/logo.png";
 import { UserContext } from '../../App';
 
 const Header = () => {
-    const [singnedInUser, setsingnedInUser] = useState(false);
-    const [user, setUser] = useState({
-        isSignedIn: false,
-        name: '',
-        email: '',
-        password: '',
-    });
     const [loggedIn, setLoggedInUser] = useContext(UserContext);
-    // console.log(singnedInUser && user.name)
     return (
         <div>
             <Navbar bg="light" expand="lg"  fixed="top">
@@ -40,10 +32,11 @@ const Header = () => {
                     </Form>
                     <Nav>
                         <Nav.Link as={Link} to="/home">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/result">result</Nav.Link>
                         <Nav.Link as={Link} to="/destination">Destination</Nav.Link>
                         <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
                         <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-                        <Nav.Link as={Link} to="/login">{singnedInUser ? user.name : 'Login'}</Nav.Link>
+                        <Nav.Link as={Link} to="/login">{ loggedIn.name ? loggedIn.name : loggedIn.email ? loggedIn.email : 'Login' }</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                 </div>
