@@ -95,7 +95,7 @@ const ResultPage = () => {
                     <div className="col-lg-4">
                         <div className="row">
                         <LoadScript
-                            googleMapsApiKey="AIzaSyD2W-lWITkB9A6z2cZq_vx52BpK6PZFhAEn"
+                            googleMapsApiKey=""
                             >
                             <GoogleMap
                                 mapContainerStyle={containerStyle}
