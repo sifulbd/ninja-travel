@@ -3,13 +3,15 @@ import DatePicker from "react-datepicker";
 import { Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
+
+
 const Bookingform =  () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const history = useHistory();
     const handleBook = (id) => {
         // history.push(`/destination`);
-        history.push(`/result/`);
+        history.push(`/result/id`);
     }
     return (
         <div>

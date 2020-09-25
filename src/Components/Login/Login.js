@@ -4,14 +4,18 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebaseConfig';
 import {UserContext} from './../../App';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
+import fb from './../../assets/images/fb.png';
+import g from './../../assets/images/g.png';
 
 if(firebase.apps.length === 0){
     firebase.initializeApp(firebaseConfig);
 }
+
 const Login = () => {
     const [loggedIn, setLoggedInUser] = useContext(UserContext);    
     const [newUser, setNewUser] = useState(true);
+    const [emptyalert, setEmptyalert] = useState('');
     const [passwordState, setPasswordState] = useState({
         password: '',
         confirmPassword: ''
@@ -25,7 +29,6 @@ const Login = () => {
     const history = useHistory();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" }};
-
     const handleGoogleSignin = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
@@ -41,8 +44,7 @@ const Login = () => {
             history.replace(from);  
         })
         .catch(err => console.log(err));
-    }
-   
+    }   
 
     //FB logging
     const handleFBLogIn = () => {
@@ -67,10 +69,7 @@ const Login = () => {
             }
         }
         if(e.target.name === 'password' || e.target.name === 'cPassword'){
-            isFieldValid = /d{1}/.test(e.target.value) && e.target.value !== '';
-            if(isFieldValid){
-                console.log('it is valid password');
-            }
+            isFieldValid =true && e.target.value !== '';
         }
         if(isFieldValid) {
             const newUserInfo = {...user};
@@ -81,6 +80,10 @@ const Login = () => {
     }
 
     const handleSubmit = (e) => {
+        if(user.email === '' || user.password === '') {
+            const EmtAlert = 'You didnot fillup form properly!'; 
+            setEmptyalert(EmtAlert);
+        }
         if(newUser && user.email && user.password){
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then(res => {
@@ -130,13 +133,18 @@ const Login = () => {
     }
 
     return (
-        <div className="nt-home img-bg">
-        <div className="ftp-overlay"></div>
+        <div className="img-bg">
+        <div className="ftp-doverlay"></div>
         <div className="container">
             <div className="row rw-height mdl section-separator">            
                 <div className="col-lg-8">    
+                    {emptyalert && <Alert variant="danger">
+                        <p className="mb-10">
+                            {emptyalert}
+                        </p>
+                    </Alert>}
                     <p style={{color: 'red'}}>{loggedIn.error}</p>
-                    {loggedIn.success && <p style={{color: 'green'}}>User {newUser ? 'created' : 'Login'} successfully</p>}                
+                    {loggedIn.success && <p style={{color: 'green'}}>User {newUser ? 'Created' : 'Login'} successfully</p>}                
                     <Form className="login-booking-form" onSubmit={handleSubmit}>
                         <h3>{!newUser ? 'Login' : 'Create an Account'}</h3>
                         {  newUser &&  <Form.Group>
@@ -158,30 +166,33 @@ const Login = () => {
                                 <Form.Control onBlur={handleBlur} name="cPassword" type="password" placeholder="Confirsm Password" />
                             </Form.Group>
                         }
-                        <div className="row">
+                        <input className="btn-custom btn-block btn btn-warning" type="submit" value={newUser ? "Create an account" : "Login"}/>
+                            <br />
+                        {!newUser && <div className="row">
                             <div className="col-lg-6">
                                 <Form.Check type="checkbox" label="Remember Me" />
                             </div>
                             <div className="col-lg-6 text-right">
-                                <Link to="/">Forget Password?</Link>                                
+                                <Link to="/">Forget Password?</Link>                              
                             </div>
-                        </div> <br></br>
-                        <input className="btn-custom btn btn-warning" type="submit" value={newUser ? "Create an account" : "Login"}/>
-                        <br /> <br />
-                        <p className="text-center mt-2 mb-0">{newUser ? 'Already have an account?' : "Don't have an account?"} 
+                            <br></br>
+                        </div>  }
+                        <p className="text-center mt-2 mb-0">{newUser ? 'Already have an account? ' : "Don't have an account?"} 
                             <span className="text-warning pointer"  onClick={() => setNewUser(!newUser)}>{newUser ? 'Log in' : 'Create an account'}</span>
                         </p>
-
                     </Form>
 
                     <br />
                     <br />
-                    <span>Or</span>
+                    <div className="center">
+                        <span>Or</span>
+                    </div>
                     <br />
                     <br />
-
-                    <button onClick={handleGoogleSignin}>Sign in With Google</button>
-                    <button onClick={handleFBLogIn}>Sign in With facebook</button>
+                    <div className="col-lg-12 alt-btn">
+                        <button className="btn-block btn" onClick={handleGoogleSignin}> <img src={g} alt=""/> Sign in With Google</button>
+                        <button className="btn-block btn" onClick={handleFBLogIn}> <img src={fb} alt=""/>  Sign in With facebook</button>
+                    </div>
                 </div>                
             </div>
         </div>

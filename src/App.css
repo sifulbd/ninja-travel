@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+.login-booking-form {
+  border: 1px solid #ABABAB;
+  padding: 50px;
+  border-radius: 10px;
+}
+.login-booking-form  .form-control {
+    border: 0;
+    border-bottom: 1px solid #ababab;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.alt-btn .btn{
+  position: relative;
+  background-color: transparent;
+  border: 1px solid #ababab;
+  margin-bottom: 20px;
+}
+.alt-btn .btn img{
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 0;
+}
+.center {
+  margin: 0 auto;
+  float: none;
+  text-align: center;
+}
