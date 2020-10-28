@@ -2,7 +2,7 @@
  Travel booking web application. 
 <br>
 <br>
-[View Live](https://ninja-travel.web.app/)
+
 
 ### Teach
 
@@ -11,7 +11,7 @@
 - React.js
 - Bootstrap4
 - Firebase
--
+
 
 
 ### Features
