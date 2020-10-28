@@ -1,4 +1,4 @@
-# Travel-guru-app
+# Ninja Travel
  Travel booking web application. 
 <br>
 <br>
